@@ -113,40 +113,41 @@ export const Hero = ({ onOpenResumeModal }) => {
             </div>
           </div>
 
-          {/* CENTER COLUMN: Cinematic Portrait Presentation (Seamless Studio Silhouette) */}
-          <div className="lg:col-span-4 flex justify-center items-center relative order-2 lg:order-2 my-4 lg:my-0">
-            <div className="relative w-full max-w-xs sm:max-w-md flex flex-col items-center">
+          {/* CENTER COLUMN: Round Shape Cinematic Portrait Presentation */}
+          <div className="lg:col-span-4 flex justify-center items-center relative order-2 lg:order-2 my-8 lg:my-0">
+            <div className="relative flex flex-col items-center">
               
-              {/* Studio Rim-Light Halo directly hugging the portrait */}
-              <div className="absolute inset-0 rounded-[3rem] bg-gradient-to-t from-cyan-500/20 via-amber-100/25 to-white/30 blur-2xl opacity-60 pointer-events-none"></div>
+              {/* Ambient Studio Backlight Glow behind the circle */}
+              <div className="absolute -inset-6 sm:-inset-10 rounded-full bg-gradient-to-tr from-cyan-500/20 via-white/30 to-amber-200/20 blur-3xl opacity-75 pointer-events-none"></div>
 
-              {/* Portrait Container - Seamless luxury studio presentation matching Keyframe 2s */}
-              <div className="relative w-64 xs:w-72 sm:w-80 xl:w-92 h-[22rem] xs:h-[25rem] sm:h-[30rem] xl:h-[35rem] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8),0_0_50px_rgba(255,255,255,0.12)] border border-white/15 group">
+              {/* Concentric Subtle Pulsing Outer Orbit Ring */}
+              <div className="absolute -inset-3 sm:-inset-4 rounded-full border border-cyan-400/25 sm:border-cyan-400/35 animate-pulse pointer-events-none"></div>
+
+              {/* Circular Portrait Frame (Round Shape) */}
+              <div className="relative w-64 h-64 xs:w-72 xs:h-72 sm:w-80 sm:h-80 xl:w-92 xl:h-92 rounded-full overflow-hidden border-2 sm:border-[3px] border-white/20 shadow-[0_20px_60px_-10px_rgba(0,0,0,0.8),0_0_50px_rgba(255,255,255,0.18)] bg-[#090b12] group">
                 <img
-                  src={personalInfo.profileImage}
+                  src="/premkumar_circle.jpg"
                   alt="Premkumar Asode"
-                  className="w-full h-full object-cover object-top filter contrast-[1.05] brightness-[1.02] transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover filter contrast-[1.04] brightness-[1.02] transition-transform duration-700 group-hover:scale-105"
                 />
 
-                {/* Smooth Gradient Vignette Bottom Blend */}
-                <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#07080b] via-[#07080b]/60 to-transparent pointer-events-none"></div>
+                {/* Bottom soft vignette inside circle */}
+                <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
+              </div>
 
-                {/* Location indicator */}
-                <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-xs font-mono text-emerald-400 shadow-xl">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                  <span>Bengaluru, IN</span>
-                </div>
+              {/* Floating Location Badge (top of circle) */}
+              <div className="absolute -top-3 sm:-top-4 left-1/2 -translate-x-1/2 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/85 backdrop-blur-md border border-white/20 text-[11px] font-mono text-emerald-400 shadow-xl z-20">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Bengaluru, IN</span>
+              </div>
 
-                {/* Minimalist Profile Pill */}
-                <div className="absolute bottom-5 left-5 right-5 p-3 rounded-2xl bg-black/70 backdrop-blur-md border border-white/15 flex items-center justify-between shadow-2xl">
-                  <div className="space-y-0.5">
-                    <span className="text-xs font-extrabold text-white block">Premkumar Asode</span>
-                    <span className="text-[11px] font-mono text-cyan-300 block">DevOps & Full Stack</span>
-                  </div>
-                  <span className="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
-                    Open to Hire
-                  </span>
-                </div>
+              {/* Floating Profile Badge (bottom of circle) */}
+              <div className="absolute -bottom-4 sm:-bottom-5 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full bg-black/85 backdrop-blur-md border border-white/20 shadow-2xl flex items-center gap-2.5 whitespace-nowrap z-20">
+                <span className="text-xs font-black text-white">Premkumar Asode</span>
+                <span className="text-slate-600 text-xs">•</span>
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
+                  Open to Hire
+                </span>
               </div>
 
             </div>
