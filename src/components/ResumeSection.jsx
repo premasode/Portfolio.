@@ -3,13 +3,9 @@ import {
   FileText, 
   Download, 
   Eye, 
-  Printer, 
   CheckCircle2, 
-  Sparkles, 
   ShieldCheck, 
-  AlertCircle,
-  ExternalLink,
-  Cpu
+  AlertCircle
 } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
@@ -17,131 +13,112 @@ export const ResumeSection = ({ onOpenResumeModal }) => {
   const [downloadNotice, setDownloadNotice] = useState(false);
 
   return (
-    <section id="resume" className="py-24 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="resume" className="py-24 relative overflow-hidden bg-[#07080b]">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 mb-3">
-            <FileText className="w-3.5 h-3.5" />
-            <span>Curriculum Vitae</span>
+        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] font-mono tracking-widest text-slate-400 uppercase">
+            <span>// CREDENTIALS & RESUME</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4 text-white">
-            Resume & <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">Professional Credentials</span>
+
+          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
+            Verified Curriculum Vitae
           </h2>
-          <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
-            Download my verified technical resume or review the print-friendly summary covering my B.E. in ECE, Java Full Stack skills, and DevOps pipeline experience.
+
+          <p className="text-xs sm:text-sm text-slate-400 max-w-md mx-auto font-normal">
+            Download the official resume PDF or review the print-friendly evaluation layout directly in your browser.
           </p>
         </div>
 
         {/* Main Resume Card */}
-        <div className="max-w-4xl mx-auto rounded-3xl bg-slate-900/90 border border-slate-800 p-8 sm:p-10 backdrop-blur-2xl shadow-2xl relative overflow-hidden">
+        <div className="max-w-4xl mx-auto rounded-[2.5rem] bg-[#0d1018] border border-white/10 p-8 sm:p-12 shadow-2xl relative overflow-hidden">
           
-          {/* Subtle background glow */}
-          <div className="absolute top-0 right-0 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
             
-            {/* Left Column: Summary of Resume contents */}
-            <div className="lg:col-span-7 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-mono">
+            {/* Left Column: Summary */}
+            <div className="lg:col-span-7 space-y-4 text-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-mono">
                 <CheckCircle2 className="w-3.5 h-3.5" />
-                <span>Verified 2025 Graduate Profile</span>
+                <span>Verified 2025 Engineering Graduate</span>
               </div>
 
-              <h3 className="text-2xl font-bold text-white">
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
                 {personalInfo.name} — Technical Resume
               </h3>
 
-              <p className="text-slate-300 text-sm leading-relaxed">
-                Targeting <strong>DevOps Engineer</strong>, <strong>Java Full Stack Developer</strong>, and <strong>Software Developer</strong> opportunities. Highlighted with hands-on projects across Jenkins, Docker, Kubernetes, AWS, Spring Boot, and MySQL.
+              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                Targeting <strong className="text-white">DevOps Engineer</strong>, <strong className="text-white">Java Full Stack Developer</strong>, and <strong className="text-white">Software Developer</strong> roles. Features verified coursework, 6+ practical projects, and 6 months technical support experience at EOS Globe.
               </p>
 
-              {/* Highlights checklist */}
-              <div className="space-y-2 pt-2 text-xs text-slate-300">
-                <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-                  <span>Bachelor of Engineering in ECE (VTU Belagavi, 2025)</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-                  <span>6+ End-to-End Projects with CI/CD, Containerization & REST APIs</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-                  <span>6 Months Technical Support Experience at EOS Globe</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-                  <span>Available in Bengaluru for immediate joining</span>
-                </div>
+              <div className="space-y-1.5 pt-2 text-xs text-slate-400 font-mono">
+                <div>• B.E. in Electronics & Communication (VTU Belagavi, 2025)</div>
+                <div>• End-to-End CI/CD Pipeline & Kubernetes Deployment Projects</div>
+                <div>• Java, Spring Boot, MySQL, REST API Architecture</div>
+                <div>• Based in Bengaluru • Available for immediate start</div>
               </div>
 
               {/* Action Buttons */}
               <div className="flex flex-wrap items-center gap-3 pt-4">
                 <button
                   onClick={onOpenResumeModal}
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-xs tracking-wide bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] transition-all"
+                  className="px-7 py-3 rounded-full text-xs font-black uppercase tracking-wider bg-white text-slate-950 hover:bg-cyan-300 transition-all shadow-xl shadow-white/10 cursor-pointer"
                 >
-                  <Eye className="w-4 h-4" />
-                  <span>View Resume in Browser</span>
+                  View Formatted Resume
                 </button>
 
                 <a
                   href={personalInfo.resumePath}
                   download="Premkumar_Asode_Resume.pdf"
                   onClick={() => setDownloadNotice(true)}
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-xs tracking-wide border border-slate-700 hover:border-cyan-500/60 bg-slate-800 hover:bg-slate-700 text-white transition-all shadow-sm"
+                  className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-xs font-bold uppercase tracking-wider border border-white/20 bg-[#12151f] hover:bg-[#1a1f2e] text-white transition-all shadow-sm"
                 >
                   <Download className="w-4 h-4 text-cyan-400" />
-                  <span>Download Resume PDF</span>
+                  <span>Download PDF</span>
                 </a>
               </div>
 
             </div>
 
-            {/* Right Column: PDF File info & instructions banner */}
-            <div className="lg:col-span-5 rounded-2xl bg-slate-950/90 border border-slate-800 p-6 flex flex-col justify-between space-y-4">
+            {/* Right Column: PDF File info & instructions */}
+            <div className="lg:col-span-5 rounded-3xl bg-black/60 border border-white/10 p-6 flex flex-col justify-between space-y-4 text-left">
               <div>
-                <span className="text-[11px] font-mono uppercase text-slate-400 font-semibold tracking-wider block mb-2">
-                  Local PDF Configuration
+                <span className="text-[10px] font-mono uppercase text-slate-400 font-bold tracking-widest block mb-2">
+                  RESUME FILE LOCATION
                 </span>
-                <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 font-mono text-xs text-cyan-300 flex items-center justify-between">
-                  <span>/public/Premkumar_Asode_Resume.pdf</span>
-                  <FileText className="w-4 h-4 text-slate-500" />
+                <div className="p-3.5 rounded-2xl bg-[#11141e] border border-white/10 font-mono text-xs text-cyan-300 flex items-center justify-between">
+                  <span className="truncate">Premkumar_Asode_Resume.pdf</span>
+                  <FileText className="w-4 h-4 text-slate-500 shrink-0 ml-2" />
                 </div>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80 text-xs text-slate-400 space-y-1.5">
+              <div className="p-3.5 rounded-2xl bg-[#11141e]/60 border border-white/5 text-xs text-slate-400 space-y-1">
                 <div className="font-semibold text-slate-200 flex items-center gap-1.5">
-                  <AlertCircle className="w-3.5 h-3.5 text-cyan-400" />
-                  <span>How to add your latest PDF:</span>
+                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                  <span>ATS Screening Ready</span>
                 </div>
                 <p className="text-[11px] leading-relaxed">
-                  Simply save your PDF file as <code className="text-cyan-300 bg-slate-950 px-1 py-0.5 rounded">Premkumar_Asode_Resume.pdf</code> directly into the <code className="text-cyan-300 bg-slate-950 px-1 py-0.5 rounded">public/</code> directory.
-                </p>
-                <p className="text-[11px] leading-relaxed text-slate-400">
-                  You can also click <strong>View Resume</strong> to print or export to PDF anytime!
+                  Clean single-page ATS-formatted resume optimized for technical recruiters and hiring managers.
                 </p>
               </div>
 
-              <div className="pt-2 text-[11px] text-slate-500 flex items-center gap-1.5 font-mono">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                <span>Ready for ATS screening & recruiter evaluation</span>
+              <div className="pt-2 text-[11px] text-slate-500 flex items-center gap-2 font-mono">
+                <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span>Active document verified in public folder</span>
               </div>
             </div>
 
           </div>
 
-          {/* Conditional Download Note */}
+          {/* Conditional notification */}
           {downloadNotice && (
-            <div className="mt-6 p-4 rounded-xl bg-cyan-950/40 border border-cyan-500/30 text-xs text-cyan-200 flex items-center justify-between animate-fade-in">
+            <div className="mt-6 p-4 rounded-2xl bg-cyan-950/40 border border-cyan-500/30 text-xs text-cyan-200 flex items-center justify-between">
               <span>
-                Download trigger dispatched for <code>{personalInfo.resumePath}</code>. If your custom PDF is not yet saved, save it to <code>public/Premkumar_Asode_Resume.pdf</code> or use the in-browser <strong>View Resume &gt; Print / Save as PDF</strong> feature!
+                Download dispatched for <code>{personalInfo.resumePath}</code>.
               </span>
               <button
                 onClick={() => setDownloadNotice(false)}
-                className="text-cyan-400 hover:text-white ml-2 text-xs font-bold"
+                className="text-cyan-400 hover:text-white text-xs font-bold"
               >
                 ✕
               </button>

@@ -96,36 +96,35 @@ export const DevOpsPipeline = () => {
   };
 
   return (
-    <section id="pipeline" className="py-24 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="pipeline" className="py-24 relative overflow-hidden bg-[#07080b]">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 mb-3">
-            <Cpu className="w-3.5 h-3.5" />
-            <span>Interactive Engineering Architecture</span>
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] font-mono tracking-widest text-slate-400 uppercase">
+            <span>// DEVOPS AUTOMATION ENGINE</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4 text-white">
-            End-to-End <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">CI/CD Pipeline Workflow</span>
+          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
+            End-to-End CI/CD Pipeline Simulator
           </h2>
-          <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto font-normal">
             Click any stage along the workflow to inspect its configuration, automation commands, and architectural purpose. Or launch the live simulation to watch the automated deployment process!
           </p>
 
           {/* Simulation Controls */}
-          <div className="flex items-center justify-center gap-3 mt-6">
+          <div className="flex items-center justify-center gap-3 pt-3">
             <button
               onClick={runSimulation}
               disabled={isSimulating}
-              className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-xs tracking-wide shadow-lg transition-all ${
+              className={`inline-flex items-center gap-2 px-7 py-3 rounded-full font-black text-xs uppercase tracking-wider shadow-lg transition-all cursor-pointer ${
                 isSimulating
-                  ? 'bg-slate-800 text-slate-400 cursor-not-allowed border border-slate-700'
-                  : 'bg-gradient-to-r from-emerald-500 to-cyan-600 text-white shadow-emerald-500/20 hover:shadow-emerald-500/35 hover:scale-[1.02]'
+                  ? 'bg-slate-800 text-slate-400 cursor-not-allowed border border-white/10'
+                  : 'bg-white text-slate-950 hover:bg-cyan-300 hover:scale-105 active:scale-95 shadow-white/10'
               }`}
             >
               {isSimulating ? (
                 <>
-                  <div className="w-3.5 h-3.5 border-2 border-emerald-400 border-t-transparent rounded-full animate-spin"></div>
+                  <div className="w-3.5 h-3.5 border-2 border-slate-950 border-t-transparent rounded-full animate-spin"></div>
                   <span>Simulating Workflow...</span>
                 </>
               ) : (
@@ -138,7 +137,7 @@ export const DevOpsPipeline = () => {
 
             <button
               onClick={resetPipeline}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-xs font-medium border border-slate-800 hover:border-slate-700 bg-slate-900/60 text-slate-400 hover:text-white transition-colors"
+              className="inline-flex items-center gap-1.5 px-5 py-3 rounded-full text-xs font-mono font-semibold border border-white/10 hover:border-white/20 bg-black/40 text-slate-400 hover:text-white transition-colors cursor-pointer"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>Reset</span>

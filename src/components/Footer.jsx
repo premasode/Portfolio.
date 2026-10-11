@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, Terminal, Heart, Mail, MapPin } from 'lucide-react';
+import { ArrowUp, Mail, MapPin } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { personalInfo } from '../data/portfolioData';
 
@@ -9,34 +9,26 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="relative border-t border-slate-800/80 bg-slate-950 text-slate-400 text-xs py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-900">
+    <footer className="relative border-t border-white/5 bg-[#07080b] text-slate-400 text-xs py-12">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-white/5">
           
-          {/* Brand & Title */}
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-purple-600 p-[1.5px]">
-              <div className="w-full h-full rounded-[10px] bg-slate-950 flex items-center justify-center">
-                <Terminal className="w-4 h-4 text-cyan-400" />
-              </div>
-            </div>
-            <div>
-              <span className="font-bold text-white text-sm block">
-                Premkumar Asode
-              </span>
-              <span className="text-[11px] text-slate-500 font-mono">
-                Aspiring DevOps Engineer | Java Full Stack Developer
-              </span>
-            </div>
+          {/* Brand */}
+          <div className="flex items-center gap-1 group">
+            <span className="font-black text-xl tracking-tight text-white">Premkumar</span>
+            <span className="w-2 h-2 rounded-full bg-cyan-400 -mt-1 inline-block"></span>
+            <span className="text-[11px] text-slate-500 font-mono ml-3 hidden sm:inline">
+              DevOps & Java Full Stack Engineer
+            </span>
           </div>
 
-          {/* Socials & Location */}
-          <div className="flex items-center gap-4">
+          {/* Socials */}
+          <div className="flex items-center gap-3">
             <a
               href={personalInfo.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-blue-400 transition-colors"
+              className="p-2.5 rounded-full bg-white/5 hover:bg-white text-slate-300 hover:text-slate-950 transition-all shadow-sm"
               title="LinkedIn Profile"
             >
               <LinkedinIcon className="w-4 h-4" />
@@ -45,15 +37,15 @@ export const Footer = () => {
               href={personalInfo.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white transition-colors"
+              className="p-2.5 rounded-full bg-white/5 hover:bg-white text-slate-300 hover:text-slate-950 transition-all shadow-sm"
               title="GitHub Profile"
             >
               <GithubIcon className="w-4 h-4" />
             </a>
             <a
               href={`mailto:${personalInfo.email}`}
-              className="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-cyan-400 transition-colors"
-              title="Direct Email"
+              className="p-2.5 rounded-full bg-white/5 hover:bg-white text-slate-300 hover:text-slate-950 transition-all shadow-sm"
+              title="Send Direct Email"
             >
               <Mail className="w-4 h-4" />
             </a>
@@ -62,24 +54,21 @@ export const Footer = () => {
           {/* Back to top button */}
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-cyan-400 border border-slate-800 transition-colors group cursor-pointer"
+            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white border border-white/10 transition-colors group cursor-pointer"
           >
-            <span className="font-mono text-xs">Back to top</span>
+            <span className="font-mono text-xs uppercase tracking-wider">Back to top</span>
             <ArrowUp className="w-3.5 h-3.5 group-hover:-translate-y-0.5 transition-transform text-cyan-400" />
           </button>
 
         </div>
 
-        {/* Bottom Credits & Copyright */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 text-[11px] text-slate-500">
+        {/* Bottom Metadata */}
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 text-[11px] font-mono text-slate-500">
           <div>
             © {new Date().getFullYear()} Premkumar Asode. All rights reserved.
           </div>
-          <div className="flex items-center gap-1.5 font-mono">
-            <span>Built with React, Vite, Tailwind CSS & Framer Motion</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <MapPin className="w-3 h-3 text-cyan-500" />
+          <div className="flex items-center gap-1.5">
+            <MapPin className="w-3 h-3 text-cyan-400" />
             <span>Bengaluru, Karnataka, India</span>
           </div>
         </div>
