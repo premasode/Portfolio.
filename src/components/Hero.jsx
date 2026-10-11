@@ -6,12 +6,13 @@ import {
   MapPin, 
   Sparkles, 
   ExternalLink, 
-  Terminal, 
+  Terminal as TerminalIcon, 
   ChevronDown, 
   CheckCircle2, 
   ShieldCheck,
   Cpu,
-  Layers
+  Layers,
+  ArrowDown
 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { personalInfo, heroBadges } from '../data/portfolioData';
@@ -20,242 +21,196 @@ import InteractiveTerminal from './InteractiveTerminal';
 
 export const Hero = ({ onOpenResumeModal }) => {
   const { isDark } = useTheme();
-  
-  // Animated typing effect
-  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
-  const [currentText, setCurrentText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [typingSpeed, setTypingSpeed] = useState(100);
+  const [showTerminal, setShowTerminal] = useState(false);
+
+  // Animated role cycling: Title split into 2 lines for giant typography
+  const rolePairs = [
+    { line1: "DEVOPS", line2: "ENGINEER" },
+    { line1: "JAVA FULL", line2: "STACK DEV" },
+    { line1: "SOFTWARE", line2: "DEVELOPER" },
+    { line1: "CLOUD &", line2: "CI/CD ENTHUSIAST" }
+  ];
+
+  const [pairIndex, setPairIndex] = useState(0);
 
   useEffect(() => {
-    const roles = personalInfo.roles;
-    const fullText = roles[currentRoleIndex];
+    const timer = setInterval(() => {
+      setPairIndex((prev) => (prev + 1) % rolePairs.length);
+    }, 3200);
+    return () => clearInterval(timer);
+  }, [rolePairs.length]);
 
-    const timer = setTimeout(() => {
-      if (!isDeleting) {
-        // Typing
-        setCurrentText(fullText.substring(0, currentText.length + 1));
-        setTypingSpeed(90);
-
-        if (currentText === fullText) {
-          // Pause before deleting
-          setTimeout(() => setIsDeleting(true), 1600);
-        }
-      } else {
-        // Deleting
-        setCurrentText(fullText.substring(0, currentText.length - 1));
-        setTypingSpeed(45);
-
-        if (currentText === '') {
-          setIsDeleting(false);
-          setCurrentRoleIndex((prev) => (prev + 1) % roles.length);
-        }
-      }
-    }, typingSpeed);
-
-    return () => clearTimeout(timer);
-  }, [currentText, isDeleting, currentRoleIndex, typingSpeed]);
+  const currentRole = rolePairs[pairIndex];
 
   return (
-    <section id="hero" className="relative min-h-[92vh] flex items-center pt-24 pb-16 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+    <section id="hero" className="relative min-h-[95vh] flex flex-col justify-between pt-24 pb-10 overflow-hidden bg-slate-950">
+      
+      {/* Cinematic Center Spotlight Behind Premkumar */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[34rem] sm:w-[48rem] h-[34rem] sm:h-[48rem] rounded-full bg-gradient-to-tr from-cyan-500/15 via-blue-600/10 to-purple-600/15 blur-3xl pointer-events-none -z-0"></div>
+
+      {/* Hero Main Grid (Left Typography, Center Big Portrait, Right Narrative) */}
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 w-full z-10 flex-1 flex items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center w-full py-8">
           
-          {/* Left Column: Bio, Roles, Badges, CTAs */}
-          <div className="lg:col-span-7 flex flex-col justify-center text-left">
-            {/* Availability Badge */}
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-md mb-6 w-fit animate-fade-in shadow-sm shadow-cyan-500/10">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-              </span>
-              <span className="text-xs font-mono font-medium text-cyan-300 tracking-wide">
-                Actively Seeking Entry-Level DevOps & Software Developer Roles
-              </span>
+          {/* LEFT COLUMN: Hi, I'm Premkumar & Giant Big Bold Titles */}
+          <div className="lg:col-span-4 flex flex-col justify-center text-left space-y-4 order-2 lg:order-1">
+            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] font-mono text-cyan-400 font-semibold">
+              <span className="w-2 h-2 rounded-full bg-cyan-400"></span>
+              <span>Hi, I'm Premkumar</span>
             </div>
 
-            {/* Main Greeting & Name */}
-            <div className="space-y-2 mb-4">
-              <h2 className="text-slate-400 font-mono text-sm tracking-widest uppercase flex items-center gap-2">
-                <span className="text-cyan-400">01.</span> Hello, I am
-              </h2>
-              <h1 className="text-4xl sm:text-5xl xl:text-6xl font-extrabold tracking-tight">
-                <span className="bg-gradient-to-r from-white via-slate-100 to-slate-300 dark:from-white dark:via-slate-100 dark:to-slate-300 light:from-slate-900 light:to-slate-700 bg-clip-text text-transparent">
-                  {personalInfo.name}
-                </span>
+            {/* Giant Title matching Sushmita reference */}
+            <div className="space-y-1 select-none">
+              <h1 className="text-4xl sm:text-6xl xl:text-7xl font-black uppercase tracking-tight text-white leading-none">
+                {currentRole.line1}
               </h1>
+              <h2 className="text-4xl sm:text-6xl xl:text-7xl font-black uppercase tracking-tight bg-gradient-to-r from-slate-200 via-cyan-200 to-purple-300 bg-clip-text text-transparent leading-none">
+                {currentRole.line2}
+              </h2>
             </div>
 
-            {/* Dynamic Typing Role */}
-            <div className="h-10 sm:h-12 flex items-center mb-5">
-              <span className="text-lg sm:text-2xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
-                {currentText}
-              </span>
-              <span className="w-0.5 h-6 sm:h-7 bg-cyan-400 ml-1 animate-pulse"></span>
+            {/* Quick tech tags */}
+            <div className="pt-2 flex flex-wrap gap-1.5 font-mono text-[11px] text-slate-400">
+              <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Java</span>
+              <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Spring Boot</span>
+              <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Docker</span>
+              <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Jenkins</span>
+              <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Kubernetes</span>
+              <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">AWS</span>
             </div>
 
-            {/* Headline */}
-            <h3 className="text-lg sm:text-xl font-medium text-slate-200 dark:text-slate-200 light:text-slate-800 mb-4 leading-snug">
-              "{personalInfo.headline}"
-            </h3>
-
-            {/* Professional Description */}
-            <p className="text-sm sm:text-base text-slate-400 dark:text-slate-400 light:text-slate-600 mb-8 max-w-2xl leading-relaxed">
-              {personalInfo.description}
-            </p>
-
-            {/* Interactive Call-To-Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-8">
-              {/* View Projects */}
-              <a
-                href="#projects"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:-translate-y-0.5 transition-all duration-200 group"
-              >
-                <span>View My Projects</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
-
-              {/* Download / View Resume */}
-              <button
-                onClick={onOpenResumeModal}
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm border border-slate-700 hover:border-cyan-500/60 bg-slate-900/60 hover:bg-slate-800/80 text-slate-200 hover:text-white transition-all duration-200 shadow-sm"
-              >
-                <Download className="w-4 h-4 text-cyan-400" />
-                <span>Download Resume</span>
-              </button>
-
-              {/* Contact Me */}
-              <a
-                href="#contact"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm border border-slate-700 hover:border-purple-500/60 bg-slate-900/60 hover:bg-slate-800/80 text-slate-200 hover:text-white transition-all duration-200"
-              >
-                <Mail className="w-4 h-4 text-purple-400" />
-                <span>Contact Me</span>
-              </a>
-
-              {/* GitHub Profile */}
-              <a
-                href={personalInfo.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-3 rounded-xl font-semibold text-sm border border-slate-800 hover:border-slate-700 bg-slate-950/80 text-slate-300 hover:text-white transition-colors"
-                title="View GitHub Profile"
-              >
-                <GithubIcon className="w-4 h-4" />
-                <span className="hidden sm:inline">GitHub</span>
-              </a>
-
-              {/* LinkedIn Profile */}
+            {/* Social icons */}
+            <div className="flex items-center gap-3 pt-2">
               <a
                 href={personalInfo.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-3 rounded-xl font-semibold text-sm border border-slate-800 hover:border-slate-700 bg-slate-950/80 text-slate-300 hover:text-blue-400 transition-colors"
-                title="View LinkedIn Profile"
+                className="p-2.5 rounded-xl border border-slate-800 bg-slate-900 hover:border-blue-500/50 text-slate-300 hover:text-blue-400 transition-colors"
+                title="LinkedIn Profile"
               >
                 <LinkedinIcon className="w-4 h-4" />
-                <span className="hidden sm:inline">LinkedIn</span>
+              </a>
+              <a
+                href={personalInfo.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2.5 rounded-xl border border-slate-800 bg-slate-900 hover:border-purple-500/50 text-slate-300 hover:text-white transition-colors"
+                title="GitHub Profile"
+              >
+                <GithubIcon className="w-4 h-4" />
+              </a>
+              <a
+                href={`mailto:${personalInfo.email}`}
+                className="p-2.5 rounded-xl border border-slate-800 bg-slate-900 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-400 transition-colors"
+                title="Send Email"
+              >
+                <Mail className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+
+          {/* CENTER COLUMN: Prominent Big Portrait Photo of Premkumar */}
+          <div className="lg:col-span-4 flex justify-center items-center relative order-1 lg:order-2 my-4 lg:my-0">
+            <div className="relative w-full max-w-sm sm:max-w-md flex flex-col items-center">
+              
+              {/* Outer soft ambient glow */}
+              <div className="absolute -inset-4 rounded-full bg-gradient-to-t from-cyan-500/25 via-blue-500/20 to-purple-600/25 blur-2xl opacity-70 pointer-events-none"></div>
+
+              {/* Big Photo Container with Vignette / Gradient Mask */}
+              <div className="relative w-72 sm:w-84 xl:w-96 h-[26rem] sm:h-[30rem] xl:h-[34rem] rounded-3xl overflow-hidden border border-cyan-500/30 shadow-2xl bg-gradient-to-b from-slate-900 to-slate-950 group">
+                <img
+                  src={personalInfo.profileImage}
+                  alt="Premkumar Asode"
+                  className="w-full h-full object-cover object-top filter contrast-105 brightness-100 transition-transform duration-700 group-hover:scale-105"
+                />
+
+                {/* Soft gradient bottom blend so it fades into background cleanly */}
+                <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent pointer-events-none"></div>
+
+                {/* Status Indicator Badge on Portrait */}
+                <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-950/80 backdrop-blur-md border border-slate-800 text-xs font-mono text-emerald-400 shadow-lg">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span>Bengaluru, IN</span>
+                </div>
+
+                {/* Graduation Tag on Portrait */}
+                <div className="absolute bottom-4 left-4 right-4 p-3 rounded-2xl bg-slate-950/85 backdrop-blur-md border border-slate-800/80 flex items-center justify-between">
+                  <div className="space-y-0.5">
+                    <span className="text-xs font-bold text-white block">Premkumar Asode</span>
+                    <span className="text-[11px] font-mono text-cyan-300 block">B.E. in ECE (VTU, 2025)</span>
+                  </div>
+                  <span className="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">
+                    Open to Hire
+                  </span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          {/* RIGHT COLUMN: Narrative, CTAs & Quick Controls */}
+          <div className="lg:col-span-4 flex flex-col justify-center text-left space-y-5 order-3 lg:order-3">
+            <div className="space-y-2">
+              <span className="text-xs font-mono uppercase tracking-[0.2em] text-slate-400 font-semibold block">
+                // AUTOMATING MODERN INFRASTRUCTURE
+              </span>
+              <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+                Passionate about Java development, cloud computing, DevOps automation, CI/CD pipelines, and building reliable software solutions.
+              </p>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                I enjoy developing applications and automating deployment workflows using modern cloud technologies.
+              </p>
+            </div>
+
+            {/* High-Impact Pill Action Buttons like Image 2 reference */}
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              <a
+                href="#projects"
+                className="px-6 py-3 rounded-full text-xs font-extrabold uppercase tracking-wider bg-white text-slate-950 hover:bg-cyan-300 hover:text-slate-950 hover:scale-105 active:scale-95 transition-all shadow-xl shadow-white/10"
+              >
+                View My Work
+              </a>
+
+              <a
+                href="#contact"
+                className="px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider border border-slate-700 bg-slate-900/80 hover:bg-slate-800 text-white hover:border-slate-500 hover:scale-105 active:scale-95 transition-all"
+              >
+                Contact Me
               </a>
             </div>
 
-            {/* Animated Technology Badges */}
-            <div className="pt-2 border-t border-slate-800/60">
-              <div className="flex items-center gap-2 mb-3">
-                <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
-                <span className="text-xs font-mono uppercase tracking-wider text-slate-400 font-medium">
-                  Core Technology Stack
-                </span>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {heroBadges.map((badge, idx) => (
-                  <span
-                    key={badge.name}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-medium border border-slate-800 bg-slate-900/70 hover:border-cyan-500/40 hover:bg-slate-800/80 hover:scale-105 transition-all cursor-default text-slate-200 shadow-sm"
-                  >
-                    <span className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${badge.color}`}></span>
-                    {badge.name}
-                  </span>
-                ))}
-              </div>
+            {/* Quick Terminal Launcher Pill */}
+            <div className="pt-2">
+              <button
+                onClick={() => setShowTerminal(!showTerminal)}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-mono border border-slate-800 bg-slate-900/60 hover:bg-slate-900 text-cyan-400 hover:border-cyan-500/40 transition-all cursor-pointer"
+              >
+                <TerminalIcon className="w-3.5 h-3.5" />
+                <span>{showTerminal ? "Hide Live Terminal" : "Launch Live Bash Terminal & K8s"}</span>
+              </button>
             </div>
 
-          </div>
-
-          {/* Right Column: Profile Card + Terminal System */}
-          <div className="lg:col-span-5 flex flex-col gap-6">
-            
-            {/* Visual Profile Card */}
-            <div className="relative group mx-auto w-full max-w-md">
-              {/* Outer Glowing Border Ring */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 rounded-3xl blur-md opacity-40 group-hover:opacity-75 transition duration-500"></div>
-              
-              <div className="relative rounded-2xl bg-slate-900/90 border border-slate-800 p-5 backdrop-blur-xl shadow-2xl flex flex-col sm:flex-row items-center gap-5">
-                {/* Photo container */}
-                <div className="relative shrink-0">
-                  <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border-2 border-cyan-500/40 shadow-lg relative bg-slate-800">
-                    <img
-                      src={personalInfo.profileImage}
-                      alt="Premkumar Asode"
-                      className="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105"
-                      onError={(e) => {
-                        // Fallback avatar if local image fails
-                        e.target.style.display = 'none';
-                      }}
-                    />
-                  </div>
-                  {/* Status dot */}
-                  <div className="absolute -bottom-1 -right-1 bg-slate-950 p-1 rounded-full border border-slate-800">
-                    <div className="w-3.5 h-3.5 rounded-full bg-emerald-500 flex items-center justify-center">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Profile Details */}
-                <div className="flex-1 text-center sm:text-left space-y-2">
-                  <div className="flex items-center justify-center sm:justify-start gap-1.5 text-xs text-cyan-400 font-mono">
-                    <MapPin className="w-3.5 h-3.5" />
-                    <span>{personalInfo.location}</span>
-                  </div>
-
-                  <h4 className="text-lg font-bold text-white">
-                    {personalInfo.name}
-                  </h4>
-
-                  <p className="text-xs text-slate-300 font-medium">
-                    ECE Graduate (VTU 2025)
-                  </p>
-
-                  <div className="flex flex-wrap justify-center sm:justify-start gap-1 pt-1">
-                    <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
-                      DevOps
-                    </span>
-                    <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-blue-500/10 text-blue-300 border border-blue-500/20">
-                      Java Full Stack
-                    </span>
-                    <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-purple-500/10 text-purple-300 border border-purple-500/20">
-                      CI/CD
-                    </span>
-                  </div>
-                </div>
+            {/* If terminal is toggled */}
+            {showTerminal && (
+              <div className="pt-2 animate-fade-in">
+                <InteractiveTerminal />
               </div>
-            </div>
-
-            {/* Interactive Terminal Showcase */}
-            <div className="w-full">
-              <InteractiveTerminal />
-            </div>
+            )}
 
           </div>
 
         </div>
       </div>
 
-      {/* Down Scroll Indicator */}
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center text-slate-500 text-xs font-mono">
-        <span>scroll down</span>
-        <ChevronDown className="w-4 h-4 animate-bounce text-cyan-400 mt-1" />
+      {/* Bottom Scroll Indicator matching Image 2 */}
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12 w-full z-10 flex items-center justify-between text-[11px] font-mono tracking-widest text-slate-500 uppercase select-none pt-4 border-t border-slate-900">
+        <a href="#about" className="flex items-center gap-2 hover:text-cyan-400 transition-colors">
+          <ArrowDown className="w-3.5 h-3.5 animate-bounce text-cyan-400" />
+          <span>Scroll to explore timeline</span>
+        </a>
+        <span className="hidden sm:inline">Premkumar Asode • 2025 Portfolio</span>
       </div>
+
     </section>
   );
 };
