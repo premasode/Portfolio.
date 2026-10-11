@@ -1,44 +1,46 @@
 import React from 'react';
-import { useTheme } from '../context/ThemeContext';
 
 export const BackgroundEffects = () => {
-  const { isDark } = useTheme();
-
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-      {/* Dynamic ambient glowing spheres */}
-      <div
-        className={`absolute -top-40 -left-40 w-96 h-96 rounded-full blur-3xl transition-opacity duration-1000 ${
-          isDark ? 'bg-cyan-500/10' : 'bg-cyan-400/15'
-        }`}
-      />
-      <div
-        className={`absolute top-1/3 -right-40 w-[30rem] h-[30rem] rounded-full blur-3xl transition-opacity duration-1000 ${
-          isDark ? 'bg-purple-600/10' : 'bg-purple-400/15'
-        }`}
-      />
-      <div
-        className={`absolute bottom-10 left-1/4 w-96 h-96 rounded-full blur-3xl transition-opacity duration-1000 ${
-          isDark ? 'bg-blue-600/10' : 'bg-blue-400/15'
-        }`}
+      {/* Studio Radial Spotlight behind the Hero (matches Reference Image 3 & 4) */}
+      <div 
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/4 w-[50rem] sm:w-[70rem] h-[40rem] sm:h-[55rem] rounded-full blur-[100px] opacity-75"
+        style={{
+          background: 'radial-gradient(ellipse at center, rgba(255, 237, 213, 0.18) 0%, rgba(148, 163, 184, 0.12) 35%, rgba(56, 189, 248, 0.06) 60%, transparent 75%)'
+        }}
       />
 
-      {/* Cyber Grid Overlay */}
-      <div
-        className={`absolute inset-0 transition-opacity duration-700 ${
-          isDark
-            ? 'opacity-30 bg-grid-pattern [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]'
-            : 'opacity-15 bg-grid-pattern [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]'
-        }`}
+      {/* Secondary Ambient Soft Diffusion on Left & Right */}
+      <div 
+        className="absolute -top-32 left-10 w-[30rem] h-[30rem] rounded-full blur-[120px] opacity-40"
+        style={{
+          background: 'radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, transparent 70%)'
+        }}
+      />
+      
+      <div 
+        className="absolute top-1/3 -right-20 w-[35rem] h-[35rem] rounded-full blur-[140px] opacity-35"
+        style={{
+          background: 'radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, transparent 70%)'
+        }}
       />
 
-      {/* Subtle scanline aesthetic for terminal/dev feel */}
-      <div
-        className={`absolute inset-0 pointer-events-none ${
-          isDark
-            ? 'bg-[linear-gradient(to_bottom,rgba(255,255,255,0.01)_50%,rgba(0,0,0,0.2)_51%)] bg-[length:100%_4px]'
-            : 'opacity-0'
-        }`}
+      {/* Subtle Bottom Ambient Floor Glow */}
+      <div 
+        className="absolute -bottom-40 left-1/3 w-[45rem] h-[30rem] rounded-full blur-[130px] opacity-30"
+        style={{
+          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%)'
+        }}
+      />
+
+      {/* Subtle Film Grain / Atmospheric Depth */}
+      <div 
+        className="absolute inset-0 opacity-[0.025] pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.8) 1px, transparent 0)`,
+          backgroundSize: '32px 32px'
+        }}
       />
     </div>
   );
