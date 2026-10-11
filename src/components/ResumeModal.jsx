@@ -113,7 +113,11 @@ export const ResumeModal = ({ isOpen, onClose }) => {
               <div className="text-xs space-y-1 text-slate-300 print:text-black font-mono">
                 <div className="flex items-center gap-1.5 justify-center sm:justify-start">
                   <Mail className="w-3.5 h-3.5 text-cyan-400 print:text-black" />
-                  <span>{personalInfo.email}</span>
+                  <a href={`mailto:${personalInfo.email}`} className="hover:underline">{personalInfo.email}</a>
+                </div>
+                <div className="flex items-center gap-1.5 justify-center sm:justify-start">
+                  <Phone className="w-3.5 h-3.5 text-emerald-400 print:text-black" />
+                  <a href={`tel:${personalInfo.phoneRaw}`} className="hover:underline">{personalInfo.phone}</a>
                 </div>
                 <div className="flex items-center gap-1.5 justify-center sm:justify-start">
                   <LinkedinIcon className="w-3.5 h-3.5 text-blue-400 print:text-black" />

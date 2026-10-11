@@ -3,6 +3,7 @@ import {
   ArrowRight, 
   Download, 
   Mail, 
+  Phone,
   Terminal as TerminalIcon, 
   ArrowDown
 } from 'lucide-react';
@@ -98,9 +99,16 @@ export const Hero = ({ onOpenResumeModal }) => {
               <a
                 href={`mailto:${personalInfo.email}`}
                 className="p-2.5 rounded-full border border-white/10 bg-[#121622] hover:border-cyan-400 text-slate-300 hover:text-white transition-all hover:scale-105 shadow-sm"
-                title="Send Email"
+                title={`Send Email: ${personalInfo.email}`}
               >
                 <Mail className="w-4 h-4" />
+              </a>
+              <a
+                href={`tel:${personalInfo.phoneRaw}`}
+                className="p-2.5 rounded-full border border-white/10 bg-[#121622] hover:border-emerald-400 text-slate-300 hover:text-white transition-all hover:scale-105 shadow-sm"
+                title={`Call ${personalInfo.phone}`}
+              >
+                <Phone className="w-4 h-4 text-emerald-400" />
               </a>
             </div>
           </div>

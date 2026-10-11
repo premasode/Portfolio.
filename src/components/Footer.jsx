@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, Mail, MapPin } from 'lucide-react';
+import { ArrowUp, Mail, Phone, MapPin } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { personalInfo } from '../data/portfolioData';
 
@@ -45,9 +45,16 @@ export const Footer = () => {
             <a
               href={`mailto:${personalInfo.email}`}
               className="p-2.5 rounded-full bg-white/5 hover:bg-white text-slate-300 hover:text-slate-950 transition-all shadow-sm"
-              title="Send Direct Email"
+              title={`Send Direct Email: ${personalInfo.email}`}
             >
               <Mail className="w-4 h-4" />
+            </a>
+            <a
+              href={`tel:${personalInfo.phoneRaw}`}
+              className="p-2.5 rounded-full bg-white/5 hover:bg-white text-slate-300 hover:text-slate-950 transition-all shadow-sm"
+              title={`Call ${personalInfo.phone}`}
+            >
+              <Phone className="w-4 h-4 text-emerald-400 hover:text-slate-950" />
             </a>
           </div>
 

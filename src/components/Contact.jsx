@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import confetti from 'canvas-confetti';
+import { Mail, Phone, MapPin, ExternalLink } from 'lucide-react';
+import { GithubIcon, LinkedinIcon } from './Icons';
 import { personalInfo } from '../data/portfolioData';
 
 export const Contact = () => {
@@ -64,12 +66,18 @@ export const Contact = () => {
               </div>
 
               <div className="pt-2 text-cyan-400">
-                &lt;sender: <span className="text-white font-semibold">{formData.name ? `"${formData.name}"` : '[Awaiting Name]'}</span>&gt;
+                &lt;to: <span className="text-white font-semibold">"{personalInfo.email}"</span>&gt;
+              </div>
+              <div className="text-emerald-400">
+                contact_no: <span className="text-white font-semibold">"{personalInfo.phone}"</span>
               </div>
               <div className="text-purple-300">
+                sender: <span className="text-white font-semibold">{formData.name ? `"${formData.name}"` : '[Awaiting Name]'}</span>
+              </div>
+              <div className="text-blue-300">
                 email: <span className="text-white font-semibold">{formData.email ? `"${formData.email}"` : '[Awaiting Email]'}</span>
               </div>
-              <div className="text-emerald-300">
+              <div className="text-slate-300">
                 message: <span className="text-slate-300 font-normal">{formData.message ? `"${formData.message}"` : '"[Awaiting Message]"'}</span>
               </div>
               <div className="text-slate-500 pt-2 text-[10px]">
@@ -154,6 +162,65 @@ export const Contact = () => {
 
           </div>
 
+        </div>
+
+        {/* Direct Contact Cards Strip */}
+        <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pb-8">
+          <a
+            href={`mailto:${personalInfo.email}`}
+            className="p-4 rounded-2xl bg-[#0f121a] border border-white/10 hover:border-cyan-400/50 hover:bg-[#141824] transition-all group flex items-center gap-3.5"
+          >
+            <div className="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 group-hover:scale-110 transition-transform">
+              <Mail className="w-4 h-4" />
+            </div>
+            <div className="text-left overflow-hidden">
+              <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500">Email Me</div>
+              <div className="text-xs font-semibold text-white truncate group-hover:text-cyan-300">{personalInfo.email}</div>
+            </div>
+          </a>
+
+          <a
+            href={`tel:${personalInfo.phoneRaw}`}
+            className="p-4 rounded-2xl bg-[#0f121a] border border-white/10 hover:border-emerald-400/50 hover:bg-[#141824] transition-all group flex items-center gap-3.5"
+          >
+            <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400 group-hover:scale-110 transition-transform">
+              <Phone className="w-4 h-4" />
+            </div>
+            <div className="text-left overflow-hidden">
+              <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500">Contact No</div>
+              <div className="text-xs font-semibold text-white truncate group-hover:text-emerald-300">{personalInfo.phone}</div>
+            </div>
+          </a>
+
+          <a
+            href={personalInfo.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-4 rounded-2xl bg-[#0f121a] border border-white/10 hover:border-blue-400/50 hover:bg-[#141824] transition-all group flex items-center gap-3.5"
+          >
+            <div className="p-2.5 rounded-xl bg-blue-500/10 text-blue-400 group-hover:scale-110 transition-transform">
+              <LinkedinIcon className="w-4 h-4" />
+            </div>
+            <div className="text-left overflow-hidden">
+              <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500">LinkedIn</div>
+              <div className="text-xs font-semibold text-white truncate group-hover:text-blue-300">premkumarasode</div>
+            </div>
+          </a>
+
+          <a
+            href={personalInfo.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-4 rounded-2xl bg-[#0f121a] border border-white/10 hover:border-purple-400/50 hover:bg-[#141824] transition-all group flex items-center gap-3.5"
+          >
+            <div className="p-2.5 rounded-xl bg-purple-500/10 text-purple-400 group-hover:scale-110 transition-transform">
+              <GithubIcon className="w-4 h-4" />
+            </div>
+            <div className="text-left overflow-hidden">
+              <div className="text-[10px] font-mono uppercase tracking-wider text-slate-500">GitHub</div>
+              <div className="text-xs font-semibold text-white truncate group-hover:text-purple-300">premasode</div>
+            </div>
+          </a>
         </div>
 
         {/* Middle Metadata Strip (Exact match to Image 2) */}

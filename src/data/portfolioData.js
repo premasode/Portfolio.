@@ -11,8 +11,10 @@ export const personalInfo = {
   description:
     "I am an Electronics and Communication Engineering graduate passionate about Java development, cloud computing, DevOps automation, CI/CD pipelines, and building reliable software solutions. I enjoy developing applications and automating deployment workflows using modern technologies.",
   location: "Bengaluru, Karnataka, India",
-  email: "premasode.dev@gmail.com", // clearly editable email
-  emailPlaceholder: "premasode.dev@gmail.com",
+  email: "premasode01@gmail.com",
+  emailPlaceholder: "premasode01@gmail.com",
+  phone: "+91 9902571976",
+  phoneRaw: "9902571976",
   linkedin: "https://www.linkedin.com/in/premkumarasode/",
   github: "https://github.com/premasode",
   resumePath: "/Premkumar_Asode_Resume.pdf",
@@ -450,6 +452,7 @@ export const terminalCommands = {
     "Location:  Bengaluru, Karnataka, India",
     "LinkedIn:  https://www.linkedin.com/in/premkumarasode/",
     "GitHub:    https://github.com/premasode",
-    "Email:     premasode.dev@gmail.com"
+    "Email:     premasode01@gmail.com",
+    "Phone:     +91 9902571976"
   ]
 };
