@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premkumar Asode | Mobile Device Simulator</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    body {
+      background-color: #07080b;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 0);
+      background-size: 32px 32px;
+    }
+    .phone-shadow {
+      box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.9), 0 0 60px rgba(56, 189, 248, 0.15);
+    }
+  </style>
+</head>
+<body class="min-h-screen text-slate-100 font-sans flex flex-col items-center justify-between p-4 sm:p-8 select-none">
+
+  <!-- Top Controller Bar -->
+  <header class="w-full max-w-4xl bg-[#0e111a]/90 backdrop-blur-xl border border-white/10 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-2xl">
+    <div class="flex items-center gap-3">
+      <div class="w-3 h-3 rounded-full bg-cyan-400 animate-pulse"></div>
+      <div>
+        <h1 class="text-sm font-black uppercase tracking-wider text-white">Mobile View Simulator</h1>
+        <p class="text-[11px] font-mono text-slate-400">Premkumar Asode • DevOps & Full Stack Portfolio</p>
+      </div>
+    </div>
+
+    <!-- Device Size Selectors -->
+    <div class="flex items-center gap-2 font-mono text-xs">
+      <button onclick="setDevice(393, 852, 'iPhone 15 Pro')" id="btn-iphone" class="px-3.5 py-1.5 rounded-xl bg-white text-slate-950 font-bold transition-all">
+        iPhone (393px)
+      </button>
+      <button onclick="setDevice(360, 780, 'Galaxy S24')" id="btn-galaxy" class="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-white transition-all">
+        Galaxy (360px)
+      </button>
+      <button onclick="setDevice(768, 920, 'iPad Mini / Tablet')" id="btn-tablet" class="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-white transition-all">
+        Tablet (768px)
+      </button>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <a href="/" target="_blank" class="px-4 py-1.5 rounded-xl bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/25 text-xs font-mono font-bold transition-all">
+        Desktop View ↗
+      </a>
+    </div>
+  </header>
+
+  <!-- Phone Mockup Container -->
+  <main class="my-6 flex flex-col items-center justify-center">
+    <div id="device-wrapper" class="relative transition-all duration-300" style="width: 393px; height: 840px;">
+      
+      <!-- Realistic Smartphone Chassis -->
+      <div class="w-full h-full bg-[#151821] rounded-[48px] p-3 border-[4px] border-slate-700/80 phone-shadow flex flex-col relative overflow-hidden">
+        
+        <!-- Top Speaker & Dynamic Island -->
+        <div class="absolute top-4 left-1/2 -translate-x-1/2 z-30 w-28 h-6 bg-black rounded-full flex items-center justify-end px-3">
+          <div class="w-2.5 h-2.5 rounded-full bg-[#0a192f] border border-cyan-500/40"></div>
+        </div>
+
+        <!-- Screen Area (Iframe) -->
+        <div class="w-full h-full rounded-[38px] overflow-hidden bg-[#07080b] relative">
+          <iframe 
+            id="mobile-iframe" 
+            src="/" 
+            class="w-full h-full border-0 select-auto"
+            title="Premkumar Asode Portfolio Mobile View"
+          ></iframe>
+        </div>
+
+        <!-- Bottom Home Indicator Bar -->
+        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/40 rounded-full z-30 pointer-events-none"></div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Bottom Instructions for Real Smartphone Testing -->
+  <footer class="w-full max-w-xl text-center space-y-2 bg-[#0e111a]/70 backdrop-blur-md border border-white/5 rounded-2xl p-4">
+    <div class="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider">
+      📱 Open on Your Actual Mobile Phone:
+    </div>
+    <div class="text-xs text-slate-300">
+      Connect your phone to the same Wi-Fi and open:
+      <div class="pt-1">
+        <a href="http://10.104.160.42:5173/" target="_blank" class="px-3 py-1 rounded-lg bg-black/60 border border-cyan-500/40 text-cyan-300 font-mono text-sm font-bold inline-block hover:underline">
+          http://10.104.160.42:5173/
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function setDevice(w, h, name) {
+      const wrapper = document.getElementById('device-wrapper');
+      wrapper.style.width = w + 'px';
+      wrapper.style.height = h + 'px';
+
+      ['btn-iphone', 'btn-galaxy', 'btn-tablet'].forEach(id => {
+        const btn = document.getElementById(id);
+        btn.className = 'px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-slate-300 hover:text-white transition-all';
+      });
+
+      if (w === 393) document.getElementById('btn-iphone').className = 'px-3.5 py-1.5 rounded-xl bg-white text-slate-950 font-bold transition-all';
+      if (w === 360) document.getElementById('btn-galaxy').className = 'px-3.5 py-1.5 rounded-xl bg-white text-slate-950 font-bold transition-all';
+      if (w === 768) document.getElementById('btn-tablet').className = 'px-3.5 py-1.5 rounded-xl bg-white text-slate-950 font-bold transition-all';
+    }
+  </script>
+</body>
+</html>
