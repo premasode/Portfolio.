@@ -50,18 +50,18 @@ export const Hero = ({ onOpenResumeModal }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center w-full py-4">
           
           {/* LEFT COLUMN: Hi, I'm Premkumar + Giant Bold Typography */}
-          <div className="lg:col-span-4 flex flex-col justify-center text-left space-y-4 order-2 lg:order-1">
+          <div className="lg:col-span-4 flex flex-col justify-center text-center lg:text-left items-center lg:items-start space-y-4 order-1 lg:order-1">
             <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] font-mono text-cyan-400 font-bold">
               <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
               <span>HI, I'M PREMKUMAR</span>
             </div>
 
-            {/* Typography scaled so ENGINEER is never clipped or truncated */}
-            <div className="space-y-0 select-none">
-              <h1 className="text-4xl sm:text-6xl md:text-5xl lg:text-5xl xl:text-6xl font-black uppercase tracking-tight text-white leading-[0.92] whitespace-nowrap">
+            {/* Typography scaled seamlessly across mobile & desktop */}
+            <div className="space-y-0.5 select-none w-full">
+              <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-black uppercase tracking-tight text-white leading-[0.95] whitespace-nowrap">
                 {currentRole.line1}
               </h1>
-              <h2 className="text-4xl sm:text-6xl md:text-5xl lg:text-5xl xl:text-6xl font-black uppercase tracking-tight bg-gradient-to-r from-white via-slate-200 to-cyan-200 bg-clip-text text-transparent leading-[0.92] whitespace-nowrap">
+              <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-5xl xl:text-6xl font-black uppercase tracking-tight bg-gradient-to-r from-white via-slate-200 to-cyan-200 bg-clip-text text-transparent leading-[0.95] whitespace-nowrap">
                 {currentRole.line2}
               </h2>
             </div>
@@ -114,14 +114,14 @@ export const Hero = ({ onOpenResumeModal }) => {
           </div>
 
           {/* CENTER COLUMN: Cinematic Portrait Presentation (Seamless Studio Silhouette) */}
-          <div className="lg:col-span-4 flex justify-center items-center relative order-1 lg:order-2 my-2 lg:my-0">
-            <div className="relative w-full max-w-sm sm:max-w-md flex flex-col items-center">
+          <div className="lg:col-span-4 flex justify-center items-center relative order-2 lg:order-2 my-4 lg:my-0">
+            <div className="relative w-full max-w-xs sm:max-w-md flex flex-col items-center">
               
               {/* Studio Rim-Light Halo directly hugging the portrait */}
               <div className="absolute inset-0 rounded-[3rem] bg-gradient-to-t from-cyan-500/20 via-amber-100/25 to-white/30 blur-2xl opacity-60 pointer-events-none"></div>
 
               {/* Portrait Container - Seamless luxury studio presentation matching Keyframe 2s */}
-              <div className="relative w-72 sm:w-80 xl:w-92 h-[27rem] sm:h-[31rem] xl:h-[35rem] rounded-[2.5rem] overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8),0_0_50px_rgba(255,255,255,0.12)] border border-white/15 group">
+              <div className="relative w-64 xs:w-72 sm:w-80 xl:w-92 h-[22rem] xs:h-[25rem] sm:h-[30rem] xl:h-[35rem] rounded-[2rem] sm:rounded-[2.5rem] overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8),0_0_50px_rgba(255,255,255,0.12)] border border-white/15 group">
                 <img
                   src={personalInfo.profileImage}
                   alt="Premkumar Asode"
@@ -153,7 +153,7 @@ export const Hero = ({ onOpenResumeModal }) => {
           </div>
 
           {/* RIGHT COLUMN: Narrative & Pill Buttons */}
-          <div className="lg:col-span-4 flex flex-col justify-center text-left space-y-6 order-3 lg:order-3">
+          <div className="lg:col-span-4 flex flex-col justify-center text-center lg:text-left items-center lg:items-start space-y-6 order-3 lg:order-3">
             <div className="space-y-3">
               <span className="text-xs font-mono uppercase tracking-[0.25em] text-slate-400 font-bold block">
                 // TURNING IDEAS INTO REALITY
@@ -167,17 +167,17 @@ export const Hero = ({ onOpenResumeModal }) => {
             </div>
 
             {/* High-Impact Pill Action Buttons (Image 3) */}
-            <div className="flex flex-wrap items-center gap-3 pt-1">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 pt-1 w-full sm:w-auto">
               <a
                 href="#projects"
-                className="px-8 py-3.5 rounded-full text-xs font-black uppercase tracking-wider bg-white text-slate-950 hover:bg-cyan-300 hover:scale-105 active:scale-95 transition-all shadow-xl shadow-white/15 cursor-pointer"
+                className="w-full sm:w-auto text-center px-8 py-3.5 rounded-full text-xs font-black uppercase tracking-wider bg-white text-slate-950 hover:bg-cyan-300 hover:scale-105 active:scale-95 transition-all shadow-xl shadow-white/15 cursor-pointer"
               >
                 View My Work
               </a>
 
               <a
                 href="#contact"
-                className="px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider border border-white/20 bg-[#121622] hover:bg-[#1a2030] text-white hover:border-white/40 hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                className="w-full sm:w-auto text-center px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider border border-white/20 bg-[#121622] hover:bg-[#1a2030] text-white hover:border-white/40 hover:scale-105 active:scale-95 transition-all cursor-pointer"
               >
                 Contact Me
               </a>
