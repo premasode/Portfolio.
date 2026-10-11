@@ -8,65 +8,86 @@
   html {
     scroll-behavior: smooth;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #07080b;
+    color: #f8fafc;
   }
 
   body {
     overflow-x: hidden;
+    background-color: #07080b;
   }
 }
 
-/* Glassmorphism helpers */
-.glass-panel {
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.glass-panel-light {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-/* Glowing card gradients */
-.glow-card {
+/* Spotlight Cone Beam Effect (like in Image 1) */
+.spotlight-card {
   position: relative;
+  background: radial-gradient(800px circle at top center, rgba(255, 255, 255, 0.06), transparent 40%), #0d0f15;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   transition: all 0.3s ease;
 }
 
-.glow-card:hover {
-  box-shadow: 0 0 25px -5px rgba(56, 189, 248, 0.25), 0 0 15px -5px rgba(168, 85, 247, 0.2);
+.spotlight-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 35px -5px rgba(255, 255, 255, 0.08);
 }
 
-/* Cyber grid background */
-.bg-grid-pattern {
-  background-size: 40px 40px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+.spotlight-beam {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.02) 60%, transparent 100%);
+  clip-path: polygon(35% 0%, 65% 0%, 100% 100%, 0% 100%);
 }
 
-.bg-dots-pattern {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-  background-size: 24px 24px;
+/* Volumetric Aura Glow behind Portrait (like in Image 4 & 3) */
+.volumetric-glow {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.22) 0%, rgba(148, 163, 184, 0.1) 45%, transparent 70%);
 }
 
-/* Custom scrollbar */
+.volumetric-warm-glow {
+  background: radial-gradient(circle, rgba(255, 237, 213, 0.18) 0%, rgba(96, 165, 250, 0.08) 50%, transparent 75%);
+}
+
+/* Infinite Marquee Animation for Tech Ticker */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Giant 3D Footer Typography */
+.giant-3d-text {
+  font-size: clamp(4rem, 16vw, 15rem);
+  font-weight: 900;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.15) 60%, rgba(255, 255, 255, 0.02) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #090d16;
+  background: #07080b;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #1e222d;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #333a4c;
 }
