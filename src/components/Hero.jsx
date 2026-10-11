@@ -35,11 +35,12 @@ export const Hero = ({ onOpenResumeModal }) => {
   return (
     <section id="hero" className="relative min-h-[92vh] flex flex-col justify-between pt-28 pb-6 overflow-hidden">
       
-      {/* Dynamic Studio Spotlight Glow directly behind Premkumar's Head & Shoulders (Image 3) */}
-      <div className="absolute top-[42%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[28rem] sm:w-[38rem] xl:w-[46rem] h-[28rem] sm:h-[38rem] xl:h-[46rem] rounded-full pointer-events-none -z-0"
+      {/* Dynamic Studio Spotlight Glow directly behind Premkumar's Head & Shoulders (Matches Keyframe 2s, 4s, 6s) */}
+      <div 
+        className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[36rem] sm:w-[50rem] xl:w-[62rem] h-[36rem] sm:h-[50rem] xl:h-[62rem] rounded-full pointer-events-none -z-0"
         style={{
-          background: 'radial-gradient(circle, rgba(255, 237, 213, 0.28) 0%, rgba(203, 213, 225, 0.18) 35%, rgba(56, 189, 248, 0.08) 60%, transparent 75%)',
-          filter: 'blur(50px)'
+          background: 'radial-gradient(circle, rgba(255, 255, 255, 0.40) 0%, rgba(254, 243, 199, 0.25) 25%, rgba(148, 163, 184, 0.15) 45%, rgba(56, 189, 248, 0.06) 65%, transparent 80%)',
+          filter: 'blur(55px)'
         }}
       />
 
@@ -111,30 +112,30 @@ export const Hero = ({ onOpenResumeModal }) => {
               {/* Studio Rim-Light Halo directly hugging the portrait */}
               <div className="absolute inset-0 rounded-[3rem] bg-gradient-to-t from-cyan-500/20 via-amber-100/25 to-white/30 blur-2xl opacity-60 pointer-events-none"></div>
 
-              {/* Portrait Container - Seamless blend with dark vignette at bottom */}
-              <div className="relative w-72 sm:w-80 xl:w-92 h-[27rem] sm:h-[31rem] xl:h-[35rem] rounded-[2.5rem] overflow-hidden shadow-2xl bg-[#090b12] border border-white/10 group">
+              {/* Portrait Container - Seamless luxury studio presentation matching Keyframe 2s */}
+              <div className="relative w-72 sm:w-80 xl:w-92 h-[27rem] sm:h-[31rem] xl:h-[35rem] rounded-[2.5rem] overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8),0_0_50px_rgba(255,255,255,0.12)] border border-white/15 group">
                 <img
                   src={personalInfo.profileImage}
                   alt="Premkumar Asode"
-                  className="w-full h-full object-cover object-top filter contrast-[1.06] brightness-100 transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover object-top filter contrast-[1.05] brightness-[1.02] transition-transform duration-700 group-hover:scale-105"
                 />
 
-                {/* Smooth Gradient Vignette Bottom Blend (fades seamlessly into background) */}
-                <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#07080b] via-[#07080b]/75 to-transparent pointer-events-none"></div>
+                {/* Smooth Gradient Vignette Bottom Blend */}
+                <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#07080b] via-[#07080b]/60 to-transparent pointer-events-none"></div>
 
                 {/* Location indicator */}
-                <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-xs font-mono text-emerald-400 shadow-xl">
+                <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-xs font-mono text-emerald-400 shadow-xl">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                   <span>Bengaluru, IN</span>
                 </div>
 
-                {/* Profile Card */}
-                <div className="absolute bottom-4 left-4 right-4 p-3.5 rounded-2xl bg-black/80 backdrop-blur-md border border-white/15 flex items-center justify-between shadow-2xl">
+                {/* Minimalist Profile Pill */}
+                <div className="absolute bottom-5 left-5 right-5 p-3 rounded-2xl bg-black/70 backdrop-blur-md border border-white/15 flex items-center justify-between shadow-2xl">
                   <div className="space-y-0.5">
                     <span className="text-xs font-extrabold text-white block">Premkumar Asode</span>
-                    <span className="text-[11px] font-mono text-cyan-300 block">B.E. in ECE (VTU, 2025)</span>
+                    <span className="text-[11px] font-mono text-cyan-300 block">DevOps & Full Stack</span>
                   </div>
-                  <span className="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
+                  <span className="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
                     Open to Hire
                   </span>
                 </div>

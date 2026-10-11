@@ -15,11 +15,17 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ResumeModal from './components/ResumeModal';
 
+import IntroLoader from './components/IntroLoader';
+
 export function App() {
+  const [loading, setLoading] = useState(true);
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
   return (
     <ThemeProvider>
+      {/* Keyframe 0s Intro Initialization Screen */}
+      {loading && <IntroLoader onComplete={() => setLoading(false)} />}
+
       <div className="min-h-screen bg-[#07080b] text-slate-100 relative font-sans selection:bg-cyan-500/20 selection:text-cyan-200">
         
         {/* Cinematic Studio Spotlight & Background Lighting */}

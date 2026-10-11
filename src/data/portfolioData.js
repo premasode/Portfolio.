@@ -16,7 +16,7 @@ export const personalInfo = {
   linkedin: "https://www.linkedin.com/in/premkumarasode/",
   github: "https://github.com/premasode",
   resumePath: "/Premkumar_Asode_Resume.pdf",
-  profileImage: "/premkumar.jpg",
+  profileImage: "/premkumar_studio.jpg",
   graduationYear: "2025",
   college: "Government Engineering College, Chamarajanagar",
   university: "Visvesvaraya Technological University (VTU), Belagavi",
